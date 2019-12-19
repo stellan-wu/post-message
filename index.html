@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Mock Page</title>
+        <style>
+            .container {
+                padding: 160px 40px;
+            }
+
+            button {
+                border-radius: 3px;
+                font-size: 14px;
+                height: 46px;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <button onclick="mockPostMessage('matchedData')">Matched</button>
+            <button onclick="mockPostMessage('unmatchedAppKey')">Unmatched AppKey</button>
+            <button onclick="mockPostMessage('unmatchedMessageType')">Unmatched MessageType</button>
+        </div>
+
+        <script>
+            function mockPostMessage(type) {
+                const allData = {
+                    matchedData: {
+                        appKey: "test-id",
+                        messageType: "gaEventTracking",
+                        data: {
+                            event: "/ga/nds/some/event",
+                            customPropOne: "custom-value-one"
+                        }
+                    },
+                    unmatchedAppKey: {
+                        appKey: "false-app-key",
+                        messageType: "gaEventTracking",
+                        data: {
+                            event: "/ga/nds/some/event",
+                            customPropOne: "custom-value-one"
+                        }
+                    },
+                    unmatchedMessageType: {
+                        appKey: "test-id",
+                        messageType: "falseMessageType",
+                        data: {
+                            event: "/ga/nds/some/event",
+                            customPropOne: "custom-value-one"
+                        }
+                    }
+                };
+
+                let data = allData[type];
+
+                data = JSON.stringify(data);
+                window.parent.postMessage(data, "https://eacom-test.pulse.ea.com/");
+                console.log("Mock page has posted message");
+            }
+        </script>
+    </body>
+</html>
