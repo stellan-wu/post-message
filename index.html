@@ -20,7 +20,7 @@
                 height: 46px;
                 width: 200px;
             }
-            
+
         </style>
     </head>
     <body>
@@ -28,7 +28,8 @@
             <p>GA Event: "/ga/nds/cta"</p>
             <div class="child">
                 <p>Valid AppKey from Mock Page: test-id</p>
-                <p>Valid MessageType: gaEventTracking</p>
+                <p>Valid MessageType from Mock Page: gaEventTracking</p>
+                <p>If the Appkey from AEM is "test-id", then click this button, the GA Event of "/ga/nds/cta" should be fired.</p>
                 <div><button onclick="mockPostMessage('matchedData')">Post Message</button></div>
             </div>
 
@@ -38,7 +39,7 @@
             </div>
 
             <div class="child">
-                <p>Invalid MessageType: falseMessageType</p>
+                <p>Invalid MessageType from Mock Page: falseMessageType</p>
                 <div><button onclick="mockPostMessage('unmatchedMessageType')">Post Message</button></div>
             </div>
            
@@ -52,7 +53,7 @@
                         messageType: "gaEventTracking",
                         data: {
                             event: "/ga/nds/cta",
-                            customPropOne: "custom-value-one"
+                            url: "https://stewu-h8tch.github.io/post-message/"
                         }
                     },
                     unmatchedAppKey: {
@@ -60,7 +61,7 @@
                         messageType: "gaEventTracking",
                         data: {
                             event: "/ga/nds/cta",
-                            customPropOne: "custom-value-one"
+                            url: "https://stewu-h8tch.github.io/post-message/"
                         }
                     },
                     unmatchedMessageType: {
@@ -68,7 +69,7 @@
                         messageType: "falseMessageType",
                         data: {
                             event: "/ga/nds/cta",
-                            customPropOne: "custom-value-one"
+                            url: "https://stewu-h8tch.github.io/post-message/"
                         }
                     }
                 };
