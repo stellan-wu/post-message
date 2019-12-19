@@ -10,6 +10,10 @@
                 padding: 160px 40px;
             }
 
+            .child {
+                margin: 50px 0;
+            }
+
             button {
                 border-radius: 3px;
                 font-size: 14px;
@@ -20,9 +24,23 @@
     </head>
     <body>
         <div class="container">
-            <button onclick="mockPostMessage('matchedData')">Matched</button>
-            <button onclick="mockPostMessage('unmatchedAppKey')">Unmatched AppKey</button>
-            <button onclick="mockPostMessage('unmatchedMessageType')">Unmatched MessageType</button>
+            <p>GA Event: "/ga/nds/cta"</p>
+            <div class="child">
+                <p>Valid AppKey from Mock Page: test-id</p>
+                <p>Valid MessageType: gaEventTracking</p>
+                <div><button onclick="mockPostMessage('matchedData')">Post Message</button></div>
+            </div>
+
+            <div class="child">
+                <p>Invalid Appkey from Mock Page: false-app-key</p>
+                <div><button onclick="mockPostMessage('unmatchedAppKey')">Post Message</button></div>
+            </div>
+
+            <div class="child">
+                <p>Invalid MessageType: falseMessageType</p>
+                <div><button onclick="mockPostMessage('unmatchedMessageType')">Post Message</button></div>
+            </div>
+           
         </div>
 
         <script>
@@ -32,7 +50,7 @@
                         appKey: "test-id",
                         messageType: "gaEventTracking",
                         data: {
-                            event: "/ga/nds/some/event",
+                            event: "/ga/nds/cta",
                             customPropOne: "custom-value-one"
                         }
                     },
@@ -40,7 +58,7 @@
                         appKey: "false-app-key",
                         messageType: "gaEventTracking",
                         data: {
-                            event: "/ga/nds/some/event",
+                            event: "/ga/nds/cta",
                             customPropOne: "custom-value-one"
                         }
                     },
@@ -48,7 +66,7 @@
                         appKey: "test-id",
                         messageType: "falseMessageType",
                         data: {
-                            event: "/ga/nds/some/event",
+                            event: "/ga/nds/cta",
                             customPropOne: "custom-value-one"
                         }
                     }
