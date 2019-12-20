@@ -42,7 +42,11 @@
                 <p>Invalid MessageType from Mock Page: falseMessageType</p>
                 <div><button onclick="mockPostMessage('unmatchedMessageType')">Post Message</button></div>
             </div>
-           
+
+            <div class="child">
+                <p>The data object of GA event is empty</p>
+                <div><button onclick="mockPostMessage('emptyData')">Post Message</button></div>
+            </div>
         </div>
 
         <script>
@@ -71,6 +75,11 @@
                             event: "/ga/nds/cta",
                             url: "https://stewu-h8tch.github.io/post-message/"
                         }
+                    },
+                    emptyData: {
+                        appKey: "test-id",
+                        messageType: "gaEventTracking",
+                        data: {}
                     }
                 };
 
